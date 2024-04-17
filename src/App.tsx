@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Badge,
   Box,
   Container,
@@ -10,9 +9,10 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { Notifications } from "@mui/icons-material";
 import DataTableTaubate from "./components/data-table";
 import { darkTheme } from "./components/theme";
+import { Notifications } from "@mui/icons-material";
+import User from "./components/user";
 
 export default function App() {
   return (
@@ -35,16 +35,12 @@ export default function App() {
             divider={<Divider orientation="vertical" flexItem />}
             spacing={2}
           >
-            <IconButton aria-label="notification">
+            <IconButton aria-label="icon button">
               <Badge badgeContent={4} color="primary">
                 <Notifications color="action" />
               </Badge>
             </IconButton>
-            <Avatar
-              alt="Avatar"
-              src="src\assets\portrait-smiley-modern-male.jpg"
-              sx={{ width: 56, height: 56, justifyContent: "center" }}
-            />
+            <User />
           </Stack>
         </Box>
         <Box mt={18}>
