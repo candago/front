@@ -1,69 +1,60 @@
-import axios from "axios";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import { Container, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import {
+  Avatar,
+  Badge,
+  Box,
+  Container,
+  CssBaseline,
+  Divider,
+  IconButton,
+  Stack,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
+import { Notifications } from "@mui/icons-material";
+import DataTableTaubate from "./components/data-table";
+import { darkTheme } from "./components/theme";
 
 export default function App() {
-  const [columns, setColumns] = useState<string[]>([]);
-  const [rows, setRows] = useState([]);
-
-  useEffect(() => {
-    async function getGrades() {
-      const response = await axios.post("http://localhost:3001/grade", {
-        tablename: "tbgrade_atuacao_taubate",
-      });
-      const sliced = response.data.slice(0, 25);
-      const sample = sliced[0];
-      const keys = Object.keys(sample);
-
-      setColumns(keys);
-      setRows(sliced);
-    }
-
-    getGrades();
-  }, []);
-
   return (
-    <Container>
-      <Typography variant="h5" gutterBottom>
-        Grade
-      </Typography>
-
-      <TableContainer
-        variant="outlined"
-        component={Paper}
-        sx={{ maxHeight: 512 }}
-      >
-        <Table>
-          <TableHead>
-            <TableRow>
-              {columns.map((column, columnIndex) => (
-                <TableCell key={columnIndex}>{column}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {rows.map((row, rowIndex) => {
-              return (
-                <TableRow key={rowIndex}>
-                  {columns.map((column, columnIndex) => {
-                    const value = row[column];
-
-                    return <TableCell key={columnIndex}>{value}</TableCell>;
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Container>
+    <ThemeProvider theme={darkTheme}>
+      <Container>
+        <Box mt={3} sx={{ display: "flex" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "left",
+              width: 64,
+              height: 64,
+            }}
+          >
+            <img src="src\assets\Logo_Visiona_branco.png" alt="Logo" />
+          </Box>
+          <Box sx={{ flexGrow: 1, justifyContent: "right" }} />
+          <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem />}
+            spacing={2}
+          >
+            <IconButton aria-label="notification">
+              <Badge badgeContent={4} color="primary">
+                <Notifications color="action" />
+              </Badge>
+            </IconButton>
+            <Avatar
+              alt="Avatar"
+              src="src\assets\portrait-smiley-modern-male.jpg"
+              sx={{ width: 56, height: 56, justifyContent: "center" }}
+            />
+          </Stack>
+        </Box>
+        <Box mt={18}>
+          <Typography variant="h3" gutterBottom>
+            Grade de Atuação de Taubaté
+          </Typography>
+          <DataTableTaubate />
+        </Box>
+      </Container>
+      <CssBaseline />
+    </ThemeProvider>
   );
 }
