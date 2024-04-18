@@ -4,10 +4,16 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
+import TableSortLabel from "@mui/material/TableSortLabel";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useEffect, useState } from "react";
 import { Box, Skeleton } from "@mui/material";
+
+/*
+  1. vamo coloca os botoes de ordenacao
+  2. vamos fazer a ordenação funcionar
+*/
 
 export default function DataTableTaubate() {
   const [columns, setColumns] = useState<string[]>([]);
@@ -19,16 +25,18 @@ export default function DataTableTaubate() {
       const response = await axios.post("http://localhost:3001/grade", {
         tablename: "tbgrade_atuacao_taubate",
       });
-      const sliced = response.data;
-      const sample = sliced[0];
+
+      const sample = response.data[0];
       const keys = Object.keys(sample);
+
       setColumns(keys);
-      setRows(sliced);
+      setRows(response.data);
       setLoading(true);
     }
 
     getGrades();
   }, []);
+
   return (
     <Box>
       {loading ? (
@@ -41,7 +49,6 @@ export default function DataTableTaubate() {
                 ))}
               </TableRow>
             </TableHead>
-
             <TableBody>
               {rows.map((row, rowIndex) => {
                 return (
