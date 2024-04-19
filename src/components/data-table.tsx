@@ -14,6 +14,9 @@ import {
   Typography,
 } from "@mui/material";
 import { Skeleton } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { TableVirtuoso, TableComponents } from "react-virtuoso";
+import React from "react";
 
 interface Data {
   [key: string]: number | string;
@@ -21,7 +24,36 @@ interface Data {
 
 type Order = "asc" | "desc";
 
-export default function DataTableTaubate() {
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  "&.MuiTableCell-head": {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  "&.MuiTableCell-body": {
+    fontSize: 14,
+  },
+}));
+
+const VirtuosoTableComponents: TableComponents<Data> = {
+  Scroller: React.forwardRef<HTMLDivElement>((props, ref) => (
+    <TableContainer component={Paper} {...props} ref={ref} />
+  )),
+  Table: (props) => (
+    <Table
+      {...props}
+      sx={{ borderCollapse: "separate", tableLayout: "fixed" }}
+    />
+  ),
+  TableHead: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
+    <TableHead component="thead" {...props} ref={ref} />
+  )),
+  TableRow: (props) => <TableRow {...props} />,
+  TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
+    <TableBody {...props} ref={ref} />
+  )),
+};
+
+export default function CombinedTable() {
   const [columns, setColumns] = useState<string[]>([]);
   const [rows, setRows] = useState<Data[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -97,6 +129,41 @@ export default function DataTableTaubate() {
     }),
   );
 
+  function fixedHeaderContent() {
+    return (
+      <TableRow>
+        {columns.map((column) => (
+          <StyledTableCell
+            key={column}
+            variant="head"
+            align="right"
+            style={{ width: 120 }}
+          >
+            <TableSortLabel
+              active={orderBy === column}
+              direction={orderBy === column ? order : "asc"}
+              onClick={() => handleRequestSort(column)}
+            >
+              {column}
+            </TableSortLabel>
+          </StyledTableCell>
+        ))}
+      </TableRow>
+    );
+  }
+
+  function rowContent(_index: number, row: Data) {
+    return (
+      <React.Fragment>
+        {columns.map((column) => (
+          <TableCell key={column} align="right">
+            {row[column]}
+          </TableCell>
+        ))}
+      </React.Fragment>
+    );
+  }
+
   return (
     <Box>
       <Box sx={{ mb: 2, display: "flex", justifyContent: "space-between" }}>
@@ -111,34 +178,14 @@ export default function DataTableTaubate() {
         />
       </Box>
       {loading ? (
-        <TableContainer component={Paper} sx={{ maxHeight: 512 }}>
-          <Table stickyHeader>
-            <TableHead>
-              <TableRow>
-                {columns.map((column, columnIndex) => (
-                  <TableCell key={columnIndex}>
-                    <TableSortLabel
-                      active={orderBy === column}
-                      direction={orderBy === column ? order : "asc"}
-                      onClick={() => handleRequestSort(column)}
-                    >
-                      {column}
-                    </TableSortLabel>
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filteredRows.map((row, rowIndex) => (
-                <TableRow key={rowIndex}>
-                  {columns.map((column, columnIndex) => (
-                    <TableCell key={columnIndex}>{row[column]}</TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <Paper style={{ height: 512, width: "100%" }}>
+          <TableVirtuoso
+            data={filteredRows}
+            components={VirtuosoTableComponents}
+            fixedHeaderContent={fixedHeaderContent}
+            itemContent={rowContent}
+          />
+        </Paper>
       ) : (
         <Skeleton
           variant="rounded"
