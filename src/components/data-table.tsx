@@ -10,6 +10,8 @@ import {
   TableHead,
   TableRow,
   TableSortLabel,
+  TextField,
+  Typography,
 } from "@mui/material";
 import { Skeleton } from "@mui/material";
 
@@ -25,6 +27,7 @@ export default function DataTableTaubate() {
   const [loading, setLoading] = useState<boolean>(false);
   const [order, setOrder] = useState<Order>("asc");
   const [orderBy, setOrderBy] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
     async function getGrades() {
@@ -79,8 +82,34 @@ export default function DataTableTaubate() {
       : (a, b) => -descendingComparator(a, b),
   );
 
+  const filteredRows = sortedRows.filter((row) =>
+    Object.values(row).some((value) => {
+      if (typeof value === "string") {
+        return value.toLowerCase().includes(searchTerm.toLowerCase());
+      } else if (typeof value === "number" && !isNaN(value)) {
+        // Convertemos o número para string e realizamos a busca
+        return value
+          .toString()
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      }
+      return false;
+    }),
+  );
+
   return (
     <Box>
+      <Box sx={{ mb: 2, display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h3" gutterBottom>
+          Grade de Atuação de Taubaté
+        </Typography>
+        <TextField
+          label="Busca"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          variant="outlined"
+        />
+      </Box>
       {loading ? (
         <TableContainer component={Paper} sx={{ maxHeight: 512 }}>
           <Table stickyHeader>
@@ -100,7 +129,7 @@ export default function DataTableTaubate() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {sortedRows.map((row, rowIndex) => (
+              {filteredRows.map((row, rowIndex) => (
                 <TableRow key={rowIndex}>
                   {columns.map((column, columnIndex) => (
                     <TableCell key={columnIndex}>{row[column]}</TableCell>

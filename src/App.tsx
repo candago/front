@@ -7,7 +7,6 @@ import {
   IconButton,
   Stack,
   ThemeProvider,
-  Typography,
 } from "@mui/material";
 import DataTableTaubate from "./components/data-table";
 import { darkTheme } from "./components/theme";
@@ -44,9 +43,6 @@ export default function App() {
           </Stack>
         </Box>
         <Box mt={18}>
-          <Typography variant="h3" gutterBottom>
-            Grade de Atuação de Taubaté
-          </Typography>
           <DataTableTaubate />
         </Box>
       </Container>
