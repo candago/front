@@ -1,3 +1,75 @@
-:root {
-    color-scheme: dark;
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-image: url(https://visionaespacial.com/wp-content/uploads/slider/cache/d7614aee29fc705b434f57e0dce73612/slide-visiona-vcub.jpg);
+    height: 80vh;
+}
+
+#img{
+    width: 351px;
+    height: 165px;
+    margin-bottom: 40px;
+    margin-left: 27px;
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(63, 63, 63, 0.4);
+    border-width: medium;
+    border-radius: 20px;
+    border: 1px orange solid;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+#texto{
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    align-content: center;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: large;
+    line-height: 1.5;
+    --variant-borderWidth: 1px;
+    border: 2px solid;
+    border-color: #da7c12;
+    background-color: #ffffff;
+    width: 400px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#texto::placeholder{
+    color: #969696;
+}
+
+#botao{
+    background-color: #da7c12;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    text-transform: uppercase;
+    padding: 8px 22px;
+    color: #ffffff;
+    border-radius: 20px;
+    margin-top: 12px;
+    width: 120px;
+    margin-left: 140px;
+}
+
+#title{
+    color: #da7c12;
+    font-size: large;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
