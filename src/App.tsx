@@ -7,6 +7,7 @@ import {
   IconButton,
   Stack,
   ThemeProvider,
+  Typography,
 } from "@mui/material";
 import DataTableTaubate from "./components/data-table";
 import { darkTheme } from "./components/theme";
@@ -42,10 +43,17 @@ export default function App() {
             <User />
           </Stack>
         </Box>
-        <Box mt={18}>
+      </Container>
+
+      <Container>
+        <Typography variant="h5" mt={5} gutterBottom>
+          Dashboard - Taubaté
+        </Typography>
+        <Box mt={3}>
           <DataTableTaubate />
         </Box>
       </Container>
+
       <CssBaseline />
     </ThemeProvider>
   );

@@ -11,7 +11,6 @@ import {
   TableRow,
   TableSortLabel,
   TextField,
-  Typography,
 } from "@mui/material";
 import { Skeleton } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -167,9 +166,6 @@ export default function CombinedTable() {
   return (
     <Box>
       <Box sx={{ mb: 2, display: "flex", justifyContent: "space-between" }}>
-        <Typography variant="h3" gutterBottom>
-          Grade de Atuação de Taubaté
-        </Typography>
         <TextField
           label="Busca"
           value={searchTerm}
