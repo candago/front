@@ -13,7 +13,6 @@ import DataTableTaubate from "./components/data-table";
 import { darkTheme } from "./components/theme";
 import { Notifications } from "@mui/icons-material";
 import User from "./components/user";
-import GridDemo from "./components/progressionGraph";
 
 export default function App() {
   return (
@@ -52,9 +51,6 @@ export default function App() {
         </Typography>
         <Box mt={3}>
           <DataTableTaubate />
-        </Box>
-        <Box mt={3}>
-          <GridDemo />
         </Box>
       </Container>
 
