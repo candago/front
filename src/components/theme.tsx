@@ -1,13 +1,16 @@
 import { createTheme } from "@mui/material";
 
-export const darkTheme = createTheme({
+export const visionaTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#fe5001",
+      main: "#F18419",
     },
     secondary: {
-      main: "#01aefe",
+      main: "#1942ac",
+    },
+    background: {
+      default: "#19212C",
     },
   },
 });

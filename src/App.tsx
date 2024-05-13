@@ -4,19 +4,22 @@ import {
   Container,
   CssBaseline,
   Divider,
+  Grid,
   IconButton,
   Stack,
   ThemeProvider,
   Typography,
 } from "@mui/material";
 import DataTableTaubate from "./components/data-table";
-import { darkTheme } from "./components/theme";
+import { visionaTheme } from "./components/theme";
 import { Notifications } from "@mui/icons-material";
 import User from "./components/user";
+import GridDemo from "./components/progressionGraph";
+import BasicBars from "./components/areaBar";
 
 export default function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={visionaTheme}>
       <Container>
         <Box mt={3} sx={{ display: "flex" }}>
           <Box
@@ -46,12 +49,20 @@ export default function App() {
       </Container>
 
       <Container>
-        <Typography variant="h5" mt={5} gutterBottom>
-          Dashboard - Taubaté
-        </Typography>
-        <Box mt={3}>
-          <DataTableTaubate />
-        </Box>
+        <Grid>
+          <Typography variant="h5" mt={5} gutterBottom>
+            Dashboard - Taubaté
+          </Typography>
+          <Grid item>
+            <DataTableTaubate />
+          </Grid>
+          <Grid item>
+            <GridDemo />
+          </Grid>
+          <Grid item>
+            <BasicBars />
+          </Grid>
+        </Grid>
       </Container>
 
       <CssBaseline />
