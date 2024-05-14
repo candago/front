@@ -165,7 +165,14 @@ export default function CombinedTable() {
 
   return (
     <Box>
-      <Box sx={{ mb: 2, display: "flex", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          mb: 2,
+          ml: 14.5,
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <TextField
           label="Busca"
           value={searchTerm}
@@ -173,23 +180,25 @@ export default function CombinedTable() {
           variant="outlined"
         />
       </Box>
-      {loading ? (
-        <Paper style={{ height: 512, width: "100%" }}>
-          <TableVirtuoso
-            data={filteredRows}
-            components={VirtuosoTableComponents}
-            fixedHeaderContent={fixedHeaderContent}
-            itemContent={rowContent}
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        {loading ? (
+          <Paper style={{ height: 512, width: "80%" }}>
+            <TableVirtuoso
+              data={filteredRows}
+              components={VirtuosoTableComponents}
+              fixedHeaderContent={fixedHeaderContent}
+              itemContent={rowContent}
+            />
+          </Paper>
+        ) : (
+          <Skeleton
+            variant="rounded"
+            animation="pulse"
+            width="100%"
+            height={512}
           />
-        </Paper>
-      ) : (
-        <Skeleton
-          variant="rounded"
-          animation="pulse"
-          width="100%"
-          height={512}
-        />
-      )}
+        )}
+      </Box>
     </Box>
   );
 }
