@@ -1,6 +1,4 @@
-const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
-
-export default function Botao():any {
+export default function Botao() {
     return(
         <>
         <button id='botao'>Entrar</button>

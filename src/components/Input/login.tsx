@@ -1,4 +1,4 @@
-export default function Login(): any {
+export default function Login() {
     return (
         <>
         <label id='title' htmlFor="Login">Login</label>
