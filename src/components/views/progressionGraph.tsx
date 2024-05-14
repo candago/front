@@ -16,7 +16,7 @@ export default function GridDemo() {
       height={300}
       margin={{ left: 30, right: 30, top: 30, bottom: 30 }}
       grid={{ vertical: true, horizontal: true }}
-      sx={{ bgcolor: "background.paper" }}
+      sx={{ bgcolor: "background.paper", borderRadius: 8 }}
     />
   );
 }
