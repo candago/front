@@ -8,10 +8,10 @@ import {
   Stack,
   ThemeProvider,
 } from "@mui/material";
-import Gridproject from "./components/grid-project";
-import { darkTheme } from "./components/theme";
+import Gridproject from "../components/grid-project";
+import { darkTheme } from "../components/theme";
 import { Notifications } from "@mui/icons-material";
-import User from "./components/user";
+import User from "../components/user";
 
 export default function App() {
   return (
@@ -42,10 +42,9 @@ export default function App() {
             <User />
           </Stack>
         </Box>
-        < Gridproject />
+        <Gridproject />
       </Container>
       <CssBaseline />
     </ThemeProvider>
-    
   );
 }
