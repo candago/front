@@ -1,38 +1,149 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%; 
+  overflow: hidden; 
+}
+
+#root {
+  height: 100%;
+}
+
 .App {
+  background-color: #19212C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.Estrutura {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; 
+  height: 100%;
+  width: 100%; 
+  
+}
+
+.Retangulo-views, .Retangulo_dashboard {
+  border: 4px solid #4A525C;
+  border-radius: 30px;
+  background-color: #232B36;
+}
+
+.Retangulo-views {
+  width: 225px;
+  height: 400px;
+  position: relative;
+  top: -245px;
+  left: 20px;
+}
+
+.header-P, .header-G {
+  color: #FFF;
+  font-weight: bold;
+}
+
+.header-P {
+  align-items: center;
+  width: 100%;
+  font-size: 26px;
+  padding: 20px 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Retangulo_dashboard {
+  width: 1900px;
+  height: 900px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Graficos {
+  width: 95%;
+  height: 400px;
+  background-color: #4A525C;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Titulo-Grafico {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 24px;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.Fundo-Grafico {
+  width: 100%;
+  height: calc(3 * (700px + 20px));
   display: flex;
   flex-direction: column;
+  gap: 0px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.header-G {
+  width: 95%;
+  padding: 30px;
+  margin-bottom: 20px;
+  font-size: 35px;
+  align-items: flex-start;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Lista-Views {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Lista-Views a {
+  text-decoration: none;
+  color: #FFF;
+  padding: 15px 20px;
+  display: block;
+}
+
+.Lista-Views a:hover {
+  text-decoration: underline;
+}
+
+.Espaco-grafico {
+  width: 98%;
+  height: 80%;
+  background-color: #FFF;
+  position: absolute;
+  bottom: 15%;
+  right: 1%;
+  border-radius: 15px;
+}
+
+.Usuario {
+  width: 200px;
+  height: 60px;
+  background-color: #F18419;
+  border-radius: 30px;
+  position: absolute;
+  top: 20px;
+  right: 100px;
+}
+
+.Circulo {
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  position: absolute;
+  top: 25px;
+  right: 245px;
 }
