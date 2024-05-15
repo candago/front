@@ -11,7 +11,6 @@ import {
   TableRow,
   TableSortLabel,
   TextField,
-  Typography,
 } from "@mui/material";
 import { Skeleton } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -34,9 +33,20 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:hover": {
+    backgroundColor: theme.palette.action.hover,
+  },
+}));
+
 const VirtuosoTableComponents: TableComponents<Data> = {
   Scroller: React.forwardRef<HTMLDivElement>((props, ref) => (
-    <TableContainer component={Paper} {...props} ref={ref} />
+    <TableContainer
+      component={Paper}
+      {...props}
+      ref={ref}
+      sx={{ borderRadius: 8 }}
+    />
   )),
   Table: (props) => (
     <Table
@@ -47,7 +57,7 @@ const VirtuosoTableComponents: TableComponents<Data> = {
   TableHead: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
     <TableHead component="thead" {...props} ref={ref} />
   )),
-  TableRow: (props) => <TableRow {...props} />,
+  TableRow: (props) => <StyledTableRow {...props} />,
   TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
     <TableBody {...props} ref={ref} />
   )),
@@ -119,7 +129,6 @@ export default function CombinedTable() {
       if (typeof value === "string") {
         return value.toLowerCase().includes(searchTerm.toLowerCase());
       } else if (typeof value === "number" && !isNaN(value)) {
-        // Convertemos o número para string e realizamos a busca
         return value
           .toString()
           .toLowerCase()
@@ -136,7 +145,7 @@ export default function CombinedTable() {
           <StyledTableCell
             key={column}
             variant="head"
-            align="right"
+            align="left"
             style={{ width: 120 }}
           >
             <TableSortLabel
@@ -156,7 +165,7 @@ export default function CombinedTable() {
     return (
       <React.Fragment>
         {columns.map((column) => (
-          <TableCell key={column} align="right">
+          <TableCell key={column} align="left">
             {row[column]}
           </TableCell>
         ))}
@@ -166,34 +175,42 @@ export default function CombinedTable() {
 
   return (
     <Box>
-      <Box sx={{ mb: 2, display: "flex", justifyContent: "space-between" }}>
-        <Typography variant="h3" gutterBottom>
-          Grade de Atuação de Taubaté
-        </Typography>
+      <Box
+        sx={{
+          mb: 2,
+          ml: 14.5,
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <TextField
           label="Busca"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          variant="outlined"
         />
       </Box>
-      {loading ? (
-        <Paper style={{ height: 512, width: "100%" }}>
-          <TableVirtuoso
-            data={filteredRows}
-            components={VirtuosoTableComponents}
-            fixedHeaderContent={fixedHeaderContent}
-            itemContent={rowContent}
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        {loading ? (
+          <Paper
+            style={{ height: 300, width: "100%" }}
+            sx={{ borderRadius: 8 }}
+          >
+            <TableVirtuoso
+              data={filteredRows}
+              components={VirtuosoTableComponents}
+              fixedHeaderContent={fixedHeaderContent}
+              itemContent={rowContent}
+            />
+          </Paper>
+        ) : (
+          <Skeleton
+            variant="rounded"
+            animation="pulse"
+            width="100%"
+            height={300}
           />
-        </Paper>
-      ) : (
-        <Skeleton
-          variant="rounded"
-          animation="pulse"
-          width="100%"
-          height={512}
-        />
-      )}
+        )}
+      </Box>
     </Box>
   );
 }
