@@ -4,8 +4,8 @@ import { Container, Grid, Card, Typography, CardMedia, CardContent, CssBaseline,
 export default function Gridproject () {
     return (
       <CssBaseline>
-        <Grid mt = {10} container justifyContent="center" item xs={12}>
-            <Paper  elevation={3} sx={{p:3, borderRadius: '2%'}}> 
+        <Grid mt = {10} item xs={12}>
+            <Paper  elevation={3} sx={{p:5, borderRadius: '2%'}}> 
         <Card>
             </Card>
       <Container >
@@ -20,12 +20,13 @@ export default function Gridproject () {
                 style={{ width: '220px', height: '180px',  }}
                 src='src/assets/mapa.png'
               />
-                <Typography variant="h5">Nome do Projeto</Typography>
+                <Typography variant="h5">Taubaté</Typography>
               </CardContent>
             </Card>
           </Grid>
-          <Grid item>
-            <Card>
+
+          {/* <Grid item>
+           <Card>
             <CardContent>
               <CardMedia
                 component="img"
@@ -71,7 +72,8 @@ export default function Gridproject () {
                 <Typography variant="h5">Nome do Projeto</Typography>
               </CardContent>
             </Card>
-          </Grid>
+          </Grid> */}
+
         </Grid>
         </Box>
       </Container>
