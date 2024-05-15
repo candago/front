@@ -4,11 +4,11 @@ import { LineChart } from "@mui/x-charts/LineChart";
 export default function GridDemo() {
   return (
     <LineChart
-      xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+      xAxis={[{ data: [0, 2, 4, 6, 8, 10] }]}
       series={[
         {
-          curve: "linear",
-          data: [2, 5.5, 2, 8.5, 1.5, 5],
+          curve: "monotoneX",
+          data: [10, 9, 5.5, 5, 1.5, 0],
           color: "#F18419",
         },
         { curve: "linear", data: [10, 8, 6, 4, 2, 0], color: "#1942ac" },

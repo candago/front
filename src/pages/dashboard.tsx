@@ -16,10 +16,10 @@ import {
   Divider,
 } from "@mui/material";
 import { Notifications } from "@mui/icons-material";
-import User from "./views/user";
-import DataTableTaubate from "./views/DataTable";
-import GridDemo from "./views/progressionGraph";
-import BasicBars from "./views/AreaBar";
+import User from "../components/views/user";
+import DataTableTaubate from "../components/views/DataTable";
+import GridDemo from "../components/views/progressionGraph";
+import BasicBars from "../components/views/AreaBar";
 import { visionaTheme } from "../theme/visionaTheme";
 
 function Dashboard() {
@@ -84,6 +84,7 @@ function Dashboard() {
               </List>
             </Paper>
           </Grid>
+
           <Grid item xs={12} md={9}>
             <Paper
               elevation={1}

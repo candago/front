@@ -129,7 +129,6 @@ export default function CombinedTable() {
       if (typeof value === "string") {
         return value.toLowerCase().includes(searchTerm.toLowerCase());
       } else if (typeof value === "number" && !isNaN(value)) {
-        // Convertemos o número para string e realizamos a busca
         return value
           .toString()
           .toLowerCase()
@@ -192,7 +191,10 @@ export default function CombinedTable() {
       </Box>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         {loading ? (
-          <Paper style={{ height: 512, width: "95%" }}>
+          <Paper
+            style={{ height: 300, width: "100%" }}
+            sx={{ borderRadius: 8 }}
+          >
             <TableVirtuoso
               data={filteredRows}
               components={VirtuosoTableComponents}
@@ -205,7 +207,7 @@ export default function CombinedTable() {
             variant="rounded"
             animation="pulse"
             width="100%"
-            height={512}
+            height={300}
           />
         )}
       </Box>
