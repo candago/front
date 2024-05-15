@@ -7,7 +7,6 @@ import {
   IconButton,
   Stack,
   ThemeProvider,
-  Typography,
 } from "@mui/material";
 import Gridproject from "./components/grid-project";
 import { darkTheme } from "./components/theme";
