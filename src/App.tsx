@@ -8,7 +8,7 @@ import {
   Stack,
   ThemeProvider,
 } from "@mui/material";
-import DataTableTaubate from "./components/data-table";
+import Gridproject from "./components/grid-project";
 import { darkTheme } from "./components/theme";
 import { Notifications } from "@mui/icons-material";
 import User from "./components/user";
@@ -42,11 +42,10 @@ export default function App() {
             <User />
           </Stack>
         </Box>
-        <Box mt={18}>
-          <DataTableTaubate />
-        </Box>
+        < Gridproject />
       </Container>
       <CssBaseline />
     </ThemeProvider>
+    
   );
 }
