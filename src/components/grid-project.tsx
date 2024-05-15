@@ -1,4 +1,4 @@
-import { Container, Grid, Card, Typography, CardMedia, CardContent, CssBaseline, Box, Paper } from '@mui/material';
+import { Container, Grid, Card, Typography, CardMedia, CardContent, CssBaseline, Box, Paper, imageListClasses } from '@mui/material';
 
 
 export default function Gridproject () {
@@ -18,7 +18,7 @@ export default function Gridproject () {
               <CardMedia
                 component="img"
                 style={{ width: '220px', height: '180px',  }}
-                image="https://pbs.twimg.com/profile_images/1699495162479517696/em74an43_400x400.jpg"
+                src='src/assets/mapa.png'
               />
                 <Typography variant="h5">Nome do Projeto</Typography>
               </CardContent>
@@ -30,7 +30,7 @@ export default function Gridproject () {
               <CardMedia
                 component="img"
                 style={{ width: '220px', height: '180px',  }}
-                image="https://pbs.twimg.com/profile_images/1699495162479517696/em74an43_400x400.jpg"
+                src='src/assets/mapa.png'
               />
                 <Typography variant="h5">Nome do Projeto</Typography>
               </CardContent>
@@ -42,7 +42,7 @@ export default function Gridproject () {
               <CardMedia
                 component="img"
                 style={{ width: '220px', height: '180px',  }}
-                image="https://pbs.twimg.com/profile_images/1699495162479517696/em74an43_400x400.jpg"
+              src='src/assets/mapa.png'
               />
                 <Typography variant="h5">Nome do Projeto</Typography>
               </CardContent>
@@ -54,7 +54,7 @@ export default function Gridproject () {
               <CardMedia
                 component="img"
                 style={{ width: '220px', height: '180px',  }}
-                image="https://pbs.twimg.com/profile_images/1699495162479517696/em74an43_400x400.jpg"
+                src='src/assets/mapa.png'
               />
                 <Typography variant="h5">Nome do Projeto</Typography>
               </CardContent>
@@ -66,7 +66,7 @@ export default function Gridproject () {
               <CardMedia
                 component="img"
                 style={{ width: '220px', height: '180px',  }}
-                image="https://pbs.twimg.com/profile_images/1699495162479517696/em74an43_400x400.jpg"
+                src='src/assets/mapa.png'
               />
                 <Typography variant="h5">Nome do Projeto</Typography>
               </CardContent>
