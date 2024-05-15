@@ -1,4 +1,3 @@
-import React from "react";
 import {
   CssBaseline,
   Grid,
@@ -37,7 +36,7 @@ function Dashboard() {
               height: 64,
             }}
           >
-            <img src="src/assets/Logo_Visiona_branco.png" alt="Logo" />
+            <img src="src/assets/images/Logo_Visiona_branco.png" alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, justifyContent: "right" }} />
           <Stack
