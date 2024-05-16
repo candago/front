@@ -9,13 +9,13 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import Gridproject from "../components/grid-project";
-import { darkTheme } from "../components/theme";
+import { visionaTheme } from "../theme/visionaTheme";
 import { Notifications } from "@mui/icons-material";
-import User from "../components/user";
+import User from "../components/views/user";
 
-export default function App() {
+export default function ProjectsGrid() {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={visionaTheme}>
       <Container>
         <Box mt={3} sx={{ display: "flex" }}>
           <Box
@@ -26,7 +26,7 @@ export default function App() {
               height: 64,
             }}
           >
-            <img src="src\assets\Logo_Visiona_branco.png" alt="Logo" />
+            <img src="src/assets/images/Logo_Visiona_branco.png" alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, justifyContent: "right" }} />
           <Stack

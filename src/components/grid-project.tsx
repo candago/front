@@ -27,7 +27,7 @@ export default function Gridproject() {
                       <CardMedia
                         component="img"
                         style={{ width: "220px", height: "180px" }}
-                        src="src/assets/mapa.png"
+                        src="src/assets/images/mapa.png"
                       />
                       <Typography variant="h5">Taubaté</Typography>
                     </CardContent>
