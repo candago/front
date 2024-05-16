@@ -30,7 +30,7 @@ body{
     padding-bottom: 40px;
 }
 
-#texto{
+#senha, #login{
     display: flex;
     border-radius: 10px;
     align-items: center;

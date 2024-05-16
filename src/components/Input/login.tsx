@@ -34,7 +34,7 @@ const Login: React.FC<LoginProps> = ({ setEmail }) => {
           </div>
           <input
             type="text"
-            id="texto"
+            id="login"
             placeholder="Insira o seu email"
             onChange={handleEmailChange}
             required

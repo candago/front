@@ -31,7 +31,7 @@ const Senha: React.FC<SenhaProps> = ({ setSenha }) => {
       </div>
       <input
         type="password"
-        id="texto"
+        id="senha"
         placeholder="Insira a sua senha"
         onChange={handleSenhaChange}
         required
