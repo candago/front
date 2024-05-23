@@ -7,16 +7,15 @@ import {
   IconButton,
   Stack,
   ThemeProvider,
-  Typography,
 } from "@mui/material";
-import DataTableTaubate from "./components/data-table";
-import { darkTheme } from "./components/theme";
+import Gridproject from "../components/grid-project";
+import { visionaTheme } from "../theme/visionaTheme";
 import { Notifications } from "@mui/icons-material";
-import User from "./components/user";
+import User from "../components/views/user";
 
-export default function App() {
+export default function ProjectsGrid() {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={visionaTheme}>
       <Container>
         <Box mt={3} sx={{ display: "flex" }}>
           <Box
@@ -27,7 +26,7 @@ export default function App() {
               height: 64,
             }}
           >
-            <img src="src\assets\Logo_Visiona_branco.png" alt="Logo" />
+            <img src="src/assets/images/Logo_Visiona_branco.png" alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, justifyContent: "right" }} />
           <Stack
@@ -43,12 +42,7 @@ export default function App() {
             <User />
           </Stack>
         </Box>
-        <Box mt={18}>
-          <Typography variant="h3" gutterBottom>
-            Grade de Atuação de Taubaté
-          </Typography>
-          <DataTableTaubate />
-        </Box>
+        <Gridproject />
       </Container>
       <CssBaseline />
     </ThemeProvider>
