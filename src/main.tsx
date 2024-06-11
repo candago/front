@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/dashboard";
-import ProjectsGrid from "./pages/GridProjects";
+import Dashboard from "./pages/dashboardPage";
+import ProjectsGrid from "./pages/gridprojectsPage";
 import LoginPage from "./pages/login";
 import "./index.css";
 
