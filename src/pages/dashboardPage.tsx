@@ -13,6 +13,9 @@ import {
   Stack,
   Box,
   Divider,
+  AppBar,
+  Toolbar,
+  Button,
 } from "@mui/material";
 import { Notifications } from "@mui/icons-material";
 import User from "../components/views/user";
@@ -35,19 +38,32 @@ function Dashboard() {
     <ThemeProvider theme={visionaTheme}>
       <CssBaseline />
 
-      <Container maxWidth="xl">
-        <Box mt={3} sx={{ display: "flex" }}>
+      <AppBar position="static">
+        <Toolbar>
           <Box
             sx={{
               display: "flex",
               justifyContent: "left",
-              width: 64,
-              height: 64,
+              width: 250,
+              height: 50,
             }}
           >
             <img src="src/assets/images/Logo_Visiona_branco.png" alt="Logo" />
           </Box>
-          <Box sx={{ flexGrow: 1, justifyContent: "right" }} />
+          <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
+            {views.map((view) => (
+              <Button
+                key={view.id}
+                color="inherit"
+                onClick={() => setActiveView(view.id)}
+              >
+                {view.name}  
+              </Button>
+            ))}
+            <Button color="inherit" onClick={() => setActiveView("all")}>
+              Mostrar Todos
+            </Button>
+          </Box>
           <Stack
             direction="row"
             divider={<Divider orientation="vertical" flexItem />}
@@ -60,40 +76,12 @@ function Dashboard() {
             </IconButton>
             <User />
           </Stack>
-        </Box>
-        <Grid mt={8} container spacing={2}>
-          <Grid item xs={12} md={3}>
-            <Paper
-              elevation={1}
-              sx={{
-                padding: 2,
-                backgroundColor: "rgba(255, 233, 241, 0.001)",
-                borderRadius: 8,
-                border: 3,
-                borderColor: "rgba(255, 233, 241, 0.15)",
-              }}
-            >
-              <Typography variant="h5" textAlign={"center"}>
-                Visualizações
-              </Typography>
-              <List>
-                {views.map((view) => (
-                  <ListItem
-                    button
-                    key={view.id}
-                    onClick={() => setActiveView(view.id)}
-                  >
-                    <ListItemText primary={view.name} />
-                  </ListItem>
-                ))}
-                <ListItem button key="all" onClick={() => setActiveView("all")}>
-                  <ListItemText primary="Mostrar Todos" />
-                </ListItem>
-              </List>
-            </Paper>
-          </Grid>
+        </Toolbar>
+      </AppBar>
 
-          <Grid item xs={12} md={9}>
+      <Container maxWidth="xl">
+        <Grid mt={8} container spacing={2}>
+          <Grid item xs={12}>
             <Paper
               elevation={1}
               sx={{
@@ -134,7 +122,7 @@ function Dashboard() {
                   </Grid>
                 )}
                 {(activeView === "all" || activeView === "BasicBars") && (
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={6} sm={6}>
                     <Paper
                       elevation={3}
                       sx={{

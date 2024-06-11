@@ -8,7 +8,7 @@ import {
   Stack,
   ThemeProvider,
 } from "@mui/material";
-import Gridproject from "../components/views/GridProjects";
+import Gridproject from "../components/GridProjects/GridProjects";
 import { visionaTheme } from "../theme/visionaTheme";
 import { Notifications } from "@mui/icons-material";
 import User from "../components/views/user";
