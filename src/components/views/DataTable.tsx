@@ -64,7 +64,7 @@ const VirtuosoTableComponents: TableComponents<Data> = {
   )),
 };
 
-export default function CombinedTable() {
+export default function DataTable() {
   const [columns, setColumns] = useState<string[]>([]);
   const [rows, setRows] = useState<Data[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -77,7 +77,7 @@ export default function CombinedTable() {
   useEffect(() => {
     async function getGrades() {
       const response = await axios.post("http://localhost:3001/grade", {
-        tablename: `tbgrade_atuacao_${queryParameters.get("city")}`,
+        city: `${queryParameters.get("city")}`,
       });
 
       const sample = response.data[0];

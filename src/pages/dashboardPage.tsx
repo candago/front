@@ -19,20 +19,26 @@ import {
 } from "@mui/material";
 import { Notifications } from "@mui/icons-material";
 import User from "../components/views/user";
-import DataTableTaubate from "../components/views/DataTable";
-import GridDemo from "../components/views/progressionGraph";
-import BasicBars from "../components/views/AreaBar";
 import { visionaTheme } from "../theme/visionaTheme";
 import { useState } from "react";
+import AnalistInfo from "../components/views/AnalistInfo";
+import { useSearchParams } from "react-router-dom";
+import DataTable from "../components/views/DataTable";
+import BasicPie from "../components/views/PieChart";
 
 const views = [
-  { id: "DataTableTaubate", name: "Tabela Completa de Taubaté" },
-  { id: "BasicBars", name: "Gráfico de Barra por Analista" },
-  { id: "GridDemo", name: "Gráfico de Progressão estilo BurndownChart" },
+  {
+    id: "DataTable",
+    name: `Tabela Completa `,
+  },
+  { id: "AnalistInfo", name: "Progressao de Analistas" },
+  { id: "BasicPie", name: "Gráfico de Progressão das Cidades" },
 ];
 
 function Dashboard() {
   const [activeView, setActiveView] = useState("all");
+  const [queryParameters] = useSearchParams();
+  const city = queryParameters.get("city");
 
   return (
     <ThemeProvider theme={visionaTheme}>
@@ -116,10 +122,9 @@ function Dashboard() {
                   paddingBottom={3}
                   variant="h5"
                 >
-                  Dashboard - cidade
+                  Dashboard
                 </Typography>
-                {(activeView === "all" ||
-                  activeView === "DataTableTaubate") && (
+                {(activeView === "all" || activeView === "DataTable") && (
                   <Grid item xs={12}>
                     <Paper
                       elevation={3}
@@ -132,9 +137,9 @@ function Dashboard() {
                       }}
                     >
                       <Typography variant="h6" paddingBottom={3}>
-                        {views.find((v) => v.id === "DataTableTaubate")?.name}
+                        {views.find((v) => v.id === "DataTable")?.name}
                       </Typography>
-                      <DataTableTaubate />
+                      <DataTable />
                     </Paper>
                     <Grid>
                       <Paper
@@ -150,7 +155,24 @@ function Dashboard() {
                         <Typography variant="h6" paddingBottom={3}>
                           {views.find((v) => v.id === "AnalistInfo")?.name}
                         </Typography>
-                        <BasicBars />
+                        <AnalistInfo />
+                      </Paper>
+                    </Grid>
+                    <Grid>
+                      <Paper
+                        elevation={3}
+                        sx={{
+                          padding: 2,
+                          backgroundColor: "rgba(255, 233, 241, 0.001)",
+                          borderRadius: 8,
+                          border: 3,
+                          borderColor: "rgba(255, 233, 241, 0.15)",
+                        }}
+                      >
+                        <Typography variant="h6" paddingBottom={3}>
+                          {views.find((v) => v.id === "BasicPie")?.name}
+                        </Typography>
+                        <BasicPie />
                       </Paper>
                     </Grid>
                   </Grid>
