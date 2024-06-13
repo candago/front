@@ -51,6 +51,7 @@ const DashboardCard: React.FC<DashboardCardProps> = ({ title, imageUrl, onClick 
 );
 
 interface Project {
+  name: string;
   title: string;
   imageUrl: string;
 }
@@ -59,20 +60,21 @@ const Gridproject: React.FC = () => {
   const navigate = useNavigate();
   const [projects, setProjects] = useState<Project[]>([]);
 
-  // Declaração do array de projetos
-  const projetos: string[] = ["Taubaté", "Atibaia", "Cruzeiro"];
+  // Declaração do array de cities
+  const cities: string[] = ["Taubate", "Cruzeiro", "Atibaia"];
 
   useEffect(() => {
-    // Mapear os nomes dos projetos para objetos Project e atualizar o estado
-    const projectData = projetos.map((projectName) => ({
+    // Mapear os nomes dos cities para objetos Project e atualizar o estado
+    const projectData = cities.map((projectName) => ({
+      name: projectName,
       title: `Dashboard ${projectName}`,
       imageUrl: "src/assets/images/mapa.png",
     }));
     setProjects(projectData);
   }, []);
 
-  const handleCardClick = () => {
-    navigate("/dashboard");
+  const handleCardClick = (projectName: string) => {
+    navigate(`/dashboard?city=${projectName.toLowerCase()}`);
   };
 
   return (
@@ -90,14 +92,14 @@ const Gridproject: React.FC = () => {
         >
           <Container>
             <Box mb={3}>
-              <Typography variant="h3">Grade de Projetos</Typography>
+              <Typography variant="h3">Grade de cities</Typography>
               <Grid mt={3} container justifyContent="left" spacing={4}>
                 {projects.map((project, index) => (
                   <Grid item key={index}>
                     <DashboardCard
                       title={project.title}
                       imageUrl={project.imageUrl}
-                      onClick={handleCardClick}
+                      onClick={() => handleCardClick(project.name)}
                     />
                   </Grid>
                 ))}

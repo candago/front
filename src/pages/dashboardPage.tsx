@@ -37,40 +37,25 @@ function Dashboard() {
   return (
     <ThemeProvider theme={visionaTheme}>
       <CssBaseline />
-
       <AppBar position="static">
         <Toolbar>
           <Box
             sx={{
               display: "flex",
               justifyContent: "left",
-              width: 250,
+              width: 1500,
               height: 50,
             }}
           >
             <img src="src/assets/images/Logo_Visiona_branco.png" alt="Logo" />
           </Box>
-          <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
-            {views.map((view) => (
-              <Button
-                key={view.id}
-                color="inherit"
-                onClick={() => setActiveView(view.id)}
-              >
-                {view.name}  
-              </Button>
-            ))}
-            <Button color="inherit" onClick={() => setActiveView("all")}>
-              Mostrar Todos
-            </Button>
-          </Box>
           <Stack
             direction="row"
             divider={<Divider orientation="vertical" flexItem />}
-            spacing={2}
+            spacing={4}
           >
             <IconButton aria-label="icon button">
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={9} color="primary">
                 <Notifications color="action" />
               </Badge>
             </IconButton>
@@ -78,7 +63,32 @@ function Dashboard() {
           </Stack>
         </Toolbar>
       </AppBar>
-
+      <Paper
+        elevation={3}
+        sx={{
+          display: "flex",
+          backgroundColor: "rgba(255, 233, 241, 0.001)",
+          borderRadius: 8,
+          border: 3,
+          borderColor: "rgba(255, 233, 241, 0.15)",
+          width: "100%"
+        }}
+      >
+        <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center", justifyContent: "center"}}>
+          {views.map((view) => (
+            <Button
+              key={view.id}
+              color="inherit"
+              onClick={() => setActiveView(view.id)}
+            >
+              {view.name}
+            </Button>
+          ))}
+          <Button color="inherit" onClick={() => setActiveView("all")}>
+            Mostrar Todos
+          </Button>
+        </Box>
+      </Paper>
       <Container maxWidth="xl">
         <Grid mt={8} container spacing={2}>
           <Grid item xs={12}>
@@ -99,28 +109,28 @@ function Dashboard() {
                   paddingBottom={3}
                   variant="h5"
                 >
-                  Dashboard - Taubaté
+                  Dashboard - cidade
                 </Typography>
                 {(activeView === "all" ||
                   activeView === "DataTableTaubate") && (
-                  <Grid item xs={12}>
-                    <Paper
-                      elevation={3}
-                      sx={{
-                        padding: 2,
-                        backgroundColor: "rgba(255, 233, 241, 0.001)",
-                        borderRadius: 8,
-                        border: 3,
-                        borderColor: "rgba(255, 233, 241, 0.15)",
-                      }}
-                    >
-                      <DataTableTaubate />
-                      <Typography variant="h6" paddingLeft={3} paddingTop={3}>
-                        {views.find((v) => v.id === "DataTableTaubate")?.name}
-                      </Typography>
-                    </Paper>
-                  </Grid>
-                )}
+                    <Grid item xs={12}>
+                      <Paper
+                        elevation={3}
+                        sx={{
+                          padding: 2,
+                          backgroundColor: "rgba(255, 233, 241, 0.001)",
+                          borderRadius: 8,
+                          border: 3,
+                          borderColor: "rgba(255, 233, 241, 0.15)",
+                        }}
+                      >
+                        <DataTableTaubate />
+                        <Typography variant="h6" paddingLeft={3} paddingTop={3}>
+                          {views.find((v) => v.id === "DataTableTaubate")?.name}
+                        </Typography>
+                      </Paper>
+                    </Grid>
+                  )}
                 {(activeView === "all" || activeView === "BasicBars") && (
                   <Grid item xs={6} sm={6}>
                     <Paper
