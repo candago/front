@@ -1,5 +1,12 @@
 import { BarChart } from "@mui/x-charts/BarChart";
-import { Box, LinearProgress, Paper, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  LinearProgress,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 
 const mock = {
   analysts: [
@@ -47,7 +54,14 @@ export default function AnalistInfo() {
       }}
     >
       <div>
-        <h2>{analisty.name}</h2>
+        <Stack direction="row" textAlign="center" spacing={2}>
+          <Avatar
+            alt="Avatar"
+            src="src/assets/images/portrait-smiley-modern-male.jpg"
+            sx={{ width: 32, height: 32, justifyContent: "center" }}
+          />
+          <h2>{analisty.name}</h2>
+        </Stack>
         <div>
           <LinearProgressWithLabel
             value={normalize(

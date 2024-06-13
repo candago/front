@@ -2,9 +2,6 @@ import {
   CssBaseline,
   Grid,
   Paper,
-  List,
-  ListItem,
-  ListItemText,
   Container,
   Typography,
   Badge,
@@ -29,10 +26,19 @@ import BasicPie from "../components/views/PieChart";
 const views = [
   {
     id: "DataTable",
-    name: `Tabela Completa `,
+    name: "Tabela Completa",
+    component: DataTable,
   },
-  { id: "AnalistInfo", name: "Progressao de Analistas" },
-  { id: "BasicPie", name: "Gráfico de Progressão das Cidades" },
+  {
+    id: "AnalistInfo",
+    name: "Progressao de Analistas",
+    component: AnalistInfo,
+  },
+  {
+    id: "BasicPie",
+    name: "Gráfico de Progressão dos Projetos",
+    component: BasicPie,
+  },
 ];
 
 function Dashboard() {
@@ -124,65 +130,42 @@ function Dashboard() {
                 >
                   Dashboard
                 </Typography>
-                {(activeView === "all" || activeView === "DataTable") && (
-                  <Grid item xs={12}>
-                    <Paper
-                      elevation={3}
-                      sx={{
-                        padding: 2,
-                        backgroundColor: "rgba(255, 233, 241, 0.001)",
-                        borderRadius: 8,
-                        border: 3,
-                        borderColor: "rgba(255, 233, 241, 0.15)",
-                      }}
-                    >
-                      <Typography variant="h6" paddingBottom={3}>
-                        {views.find((v) => v.id === "DataTable")?.name}
-                      </Typography>
-                      <DataTable />
-                    </Paper>
-                    <Grid>
-                      <Paper
-                        elevation={3}
-                        sx={{
-                          padding: 2,
-                          backgroundColor: "rgba(255, 233, 241, 0.001)",
-                          borderRadius: 8,
-                          border: 3,
-                          borderColor: "rgba(255, 233, 241, 0.15)",
-                        }}
-                      >
-                        <Typography variant="h6" paddingBottom={3}>
-                          {views.find((v) => v.id === "AnalistInfo")?.name}
-                        </Typography>
-                        <AnalistInfo />
-                      </Paper>
-                    </Grid>
-                    <Grid>
-                      <Paper
-                        elevation={3}
-                        sx={{
-                          padding: 2,
-                          backgroundColor: "rgba(255, 233, 241, 0.001)",
-                          borderRadius: 8,
-                          border: 3,
-                          borderColor: "rgba(255, 233, 241, 0.15)",
-                        }}
-                      >
-                        <Typography variant="h6" paddingBottom={3}>
-                          {views.find((v) => v.id === "BasicPie")?.name}
-                        </Typography>
-                        <BasicPie />
-                      </Paper>
-                    </Grid>
-                  </Grid>
-                )}
+                {activeView === "all"
+                  ? views.map((view) => (
+                      <DynamicView key={view.id} view={view} />
+                    ))
+                  : views
+                      .filter((view) => view.id === activeView)
+                      .map((view) => <DynamicView key={view.id} view={view} />)}
               </Grid>
             </Paper>
           </Grid>
         </Grid>
       </Container>
     </ThemeProvider>
+  );
+}
+
+function DynamicView({ view }) {
+  const Component = view.component;
+  return (
+    <Grid item xs={12}>
+      <Paper
+        elevation={3}
+        sx={{
+          padding: 2,
+          backgroundColor: "rgba(255, 233, 241, 0.001)",
+          borderRadius: 8,
+          border: 3,
+          borderColor: "rgba(255, 233, 241, 0.15)",
+        }}
+      >
+        <Typography variant="h6" paddingBottom={3}>
+          {view.name}
+        </Typography>
+        <Component />
+      </Paper>
+    </Grid>
   );
 }
 

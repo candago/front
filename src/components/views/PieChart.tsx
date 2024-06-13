@@ -13,7 +13,7 @@ const pieParams = { height: 200 };
 
 export default function BasicPie() {
   return mock.cities.map((city) => (
-    <Stack direction="row" textAlign="center" spacing={2}>
+    <Stack direction="row" textAlign="center" spacing={3}>
       <Box flexGrow={1}>
         <Typography variant="h6">{city.name}</Typography>
         <PieChart
