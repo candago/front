@@ -71,10 +71,17 @@ function Dashboard() {
           borderRadius: 8,
           border: 3,
           borderColor: "rgba(255, 233, 241, 0.15)",
-          width: "100%"
+          width: "100%",
         }}
       >
-        <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center", justifyContent: "center"}}>
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           {views.map((view) => (
             <Button
               key={view.id}
@@ -113,7 +120,23 @@ function Dashboard() {
                 </Typography>
                 {(activeView === "all" ||
                   activeView === "DataTableTaubate") && (
-                    <Grid item xs={12}>
+                  <Grid item xs={12}>
+                    <Paper
+                      elevation={3}
+                      sx={{
+                        padding: 2,
+                        backgroundColor: "rgba(255, 233, 241, 0.001)",
+                        borderRadius: 8,
+                        border: 3,
+                        borderColor: "rgba(255, 233, 241, 0.15)",
+                      }}
+                    >
+                      <Typography variant="h6" paddingBottom={3}>
+                        {views.find((v) => v.id === "DataTableTaubate")?.name}
+                      </Typography>
+                      <DataTableTaubate />
+                    </Paper>
+                    <Grid>
                       <Paper
                         elevation={3}
                         sx={{
@@ -124,49 +147,12 @@ function Dashboard() {
                           borderColor: "rgba(255, 233, 241, 0.15)",
                         }}
                       >
-                        <DataTableTaubate />
-                        <Typography variant="h6" paddingLeft={3} paddingTop={3}>
-                          {views.find((v) => v.id === "DataTableTaubate")?.name}
+                        <Typography variant="h6" paddingBottom={3}>
+                          {views.find((v) => v.id === "BasicBars")?.name}
                         </Typography>
+                        <BasicBars />
                       </Paper>
                     </Grid>
-                  )}
-                {(activeView === "all" || activeView === "BasicBars") && (
-                  <Grid item xs={6} sm={6}>
-                    <Paper
-                      elevation={3}
-                      sx={{
-                        padding: 2,
-                        backgroundColor: "rgba(255, 233, 241, 0.001)",
-                        borderRadius: 8,
-                        border: 3,
-                        borderColor: "rgba(255, 233, 241, 0.15)",
-                      }}
-                    >
-                      <BasicBars />
-                      <Typography variant="h6" paddingLeft={3} paddingTop={3}>
-                        {views.find((v) => v.id === "BasicBars")?.name}
-                      </Typography>
-                    </Paper>
-                  </Grid>
-                )}
-                {(activeView === "all" || activeView === "GridDemo") && (
-                  <Grid item xs={12} sm={6}>
-                    <Paper
-                      elevation={3}
-                      sx={{
-                        padding: 2,
-                        backgroundColor: "rgba(255, 233, 241, 0.001)",
-                        borderRadius: 8,
-                        border: 3,
-                        borderColor: "rgba(255, 233, 241, 0.15)",
-                      }}
-                    >
-                      <GridDemo />
-                      <Typography variant="h6" paddingLeft={3} paddingTop={3}>
-                        {views.find((v) => v.id === "GridDemo")?.name}
-                      </Typography>
-                    </Paper>
                   </Grid>
                 )}
               </Grid>

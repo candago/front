@@ -16,9 +16,7 @@ import { Skeleton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { TableVirtuoso, TableComponents } from "react-virtuoso";
 import React from "react";
-import {
-  useSearchParams,
-} from "react-router-dom"
+import { useSearchParams } from "react-router-dom";
 
 interface Data {
   [key: string]: number | string;
@@ -74,7 +72,7 @@ export default function CombinedTable() {
   const [orderBy, setOrderBy] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const [queryParameters] = useSearchParams()
+  const [queryParameters] = useSearchParams();
 
   useEffect(() => {
     async function getGrades() {
@@ -183,7 +181,6 @@ export default function CombinedTable() {
       <Box
         sx={{
           mb: 2,
-          ml: 14.5,
           display: "flex",
           justifyContent: "space-between",
         }}
