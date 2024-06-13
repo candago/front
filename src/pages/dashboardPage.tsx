@@ -148,7 +148,7 @@ function Dashboard() {
                         }}
                       >
                         <Typography variant="h6" paddingBottom={3}>
-                          {views.find((v) => v.id === "BasicBars")?.name}
+                          {views.find((v) => v.id === "AnalistInfo")?.name}
                         </Typography>
                         <BasicBars />
                       </Paper>
