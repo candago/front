@@ -42,7 +42,7 @@
       <ThemeProvider theme={visionaTheme}>
         <CssBaseline />
 
-        <AppBar position="fixed">
+        <AppBar position="static">
           <Toolbar>
             <img
               src="src/assets/images/Logo_Visiona_branco.png"
