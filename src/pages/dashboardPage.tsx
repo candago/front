@@ -49,65 +49,68 @@ function Dashboard() {
   return (
     <ThemeProvider theme={visionaTheme}>
       <CssBaseline />
-      <AppBar position="static">
-        <Toolbar>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "left",
-              width: 1500,
-              height: 50,
-            }}
-          >
-            <img src="src/assets/images/Logo_Visiona_branco.png" alt="Logo" />
-          </Box>
-          <Stack
-            direction="row"
-            divider={<Divider orientation="vertical" flexItem />}
-            spacing={4}
-          >
-            <IconButton aria-label="icon button">
-              <Badge badgeContent={9} color="primary">
-                <Notifications color="action" />
-              </Badge>
-            </IconButton>
-            <User />
-          </Stack>
-        </Toolbar>
-      </AppBar>
-      <Paper
-        elevation={3}
-        sx={{
-          display: "flex",
-          backgroundColor: "rgba(255, 233, 241, 0.001)",
-          borderRadius: 8,
-          border: 3,
-          borderColor: "rgba(255, 233, 241, 0.15)",
-          width: "100%",
-        }}
-      >
-        <Box
+      <Container>
+        <AppBar position="static">
+          <Toolbar>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "left",
+                width: 1500,
+                height: 50,
+              }}
+            >
+              <img src="src/assets/images/Logo_Visiona_branco.png" alt="Logo" />
+            </Box>
+            <Stack
+              direction="row"
+              divider={<Divider orientation="vertical" flexItem />}
+              spacing={4}
+            >
+              <IconButton aria-label="icon button">
+                <Badge badgeContent={9} color="primary">
+                  <Notifications color="action" />
+                </Badge>
+              </IconButton>
+              <User />
+            </Stack>
+          </Toolbar>
+        </AppBar>
+        <Paper
+          elevation={3}
           sx={{
-            flexGrow: 1,
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            backgroundColor: "rgba(255, 233, 241, 0.001)",
+            borderRadius: 8,
+            border: 3,
+            borderColor: "rgba(255, 233, 241, 0.15)",
+            width: "100%",
           }}
         >
-          {views.map((view) => (
-            <Button
-              key={view.id}
-              color="inherit"
-              onClick={() => setActiveView(view.id)}
-            >
-              {view.name}
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {views.map((view) => (
+              <Button
+                key={view.id}
+                color="inherit"
+                onClick={() => setActiveView(view.id)}
+              >
+                {view.name}
+              </Button>
+            ))}
+            <Button color="inherit" onClick={() => setActiveView("all")}>
+              Mostrar Todos
             </Button>
-          ))}
-          <Button color="inherit" onClick={() => setActiveView("all")}>
-            Mostrar Todos
-          </Button>
-        </Box>
-      </Paper>
+          </Box>
+        </Paper>
+      </Container>
+
       <Container maxWidth="xl">
         <Grid mt={8} container spacing={2}>
           <Grid item xs={12}>

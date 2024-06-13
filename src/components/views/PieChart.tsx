@@ -6,6 +6,7 @@ const mock = {
   cities: [
     { name: "Taubate", total_area: 1000, completed_area: 500 },
     { name: "Atibaia", total_area: 800, completed_area: 300 },
+    { name: "Cruzeiro", total_area: 1200, completed_area: 700 },
   ],
 };
 

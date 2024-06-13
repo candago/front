@@ -77,7 +77,7 @@ export default function DataTable() {
   useEffect(() => {
     async function getGrades() {
       const response = await axios.post("http://localhost:3001/grade", {
-        city: `${queryParameters.get("city")}`,
+        city: queryParameters.get("city"),
       });
 
       const sample = response.data[0];

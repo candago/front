@@ -20,6 +20,11 @@ const mock = {
       completed_area: 5.64 /* valor em m2 de quanta área foi feita pelo caba */,
       assigned_area: 12.3 /* valor em m2 de quanta área esse cara tem que fazer */,
     },
+    {
+      name: "Analista 3",
+      completed_area: 36.65 /* valor em m2 de quanta área foi feita pelo caba */,
+      assigned_area: 42.91 /* valor em m2 de quanta área esse cara tem que fazer */,
+    },
   ],
 };
 const normalize = (value, min, max) => {

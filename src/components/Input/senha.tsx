@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from "react";
+import axios from "axios";
 
 interface SenhaProps {
   setSenha: (senha: string) => void;
@@ -16,7 +16,7 @@ const Senha: React.FC<SenhaProps> = ({ setSenha }) => {
         const keys = Object.keys(sample);
         console.log(keys);
       } catch (error) {
-        console.error('Erro ao buscar dados do email:', error);
+        console.error("Erro ao buscar dados do email:", error);
       }
     }
   }, []);
@@ -26,8 +26,8 @@ const Senha: React.FC<SenhaProps> = ({ setSenha }) => {
 
   return (
     <>
-    <div id='title'>
-      <label htmlFor="senha">Senha</label>
+      <div id="title">
+        <label htmlFor="senha">Senha</label>
       </div>
       <input
         type="password"
